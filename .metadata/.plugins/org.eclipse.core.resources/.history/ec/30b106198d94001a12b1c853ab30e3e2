@@ -1,0 +1,6 @@
+package com.cardealer.beans;
+
+public class CarOwner {
+	private int carId;
+	private int userId;
+}

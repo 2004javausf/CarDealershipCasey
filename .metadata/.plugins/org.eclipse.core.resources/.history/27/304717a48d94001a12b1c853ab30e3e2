@@ -1,0 +1,31 @@
+package com.cardealer.beans;
+
+public class CarOwner {
+	private int carId;
+	private int userId;
+	
+	public CarOwner() {
+		super();
+	}
+	public CarOwner(int carId, int userId) {
+		super();
+		this.carId = carId;
+		this.userId = userId;
+	}
+	public int getCarId() {
+		return carId;
+	}
+	public void setCarId(int carId) {
+		this.carId = carId;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	@Override
+	public String toString() {
+		return "CarOwner [carId=" + carId + ", userId=" + userId + "]";
+	}
+}

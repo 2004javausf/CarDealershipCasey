@@ -1,0 +1,9 @@
+package com.cardealer.beans;
+
+public class PendingOffers {
+	private Integer offerId;
+	private Integer carId;
+	private Integer customerId;
+	private Double offer;
+	
+}

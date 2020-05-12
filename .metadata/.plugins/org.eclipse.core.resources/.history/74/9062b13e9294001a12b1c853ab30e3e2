@@ -1,0 +1,8 @@
+package com.cardealer.beans;
+
+public class PaymentHistory {
+	Integer TransactionId;
+	Integer CarId;
+	Integer UserId;
+	Double AmountPaid;
+}

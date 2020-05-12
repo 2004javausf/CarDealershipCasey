@@ -1,0 +1,11 @@
+package com.cardealer.beans;
+
+public class AcceptedOffers {
+	
+	Integer offerId;
+	Integer carId;
+	Integer customerId;
+	Integer MonthsLeft;
+	Double AmountOwed;
+
+}
