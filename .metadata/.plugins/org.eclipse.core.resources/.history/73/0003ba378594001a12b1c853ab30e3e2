@@ -39,7 +39,7 @@ public class UserLogin {
 				Employee.employeeMenu(user, in);
 			}else {
 				//customer
-				Customer.customerMenu(user, in);
+				System.out.println(user);
 			}
 			break;
 		}

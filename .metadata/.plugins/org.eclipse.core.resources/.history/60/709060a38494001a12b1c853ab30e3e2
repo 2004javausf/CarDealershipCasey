@@ -35,11 +35,11 @@ public class UserLogin {
 				break;
 			}
 			else if(user.getCustomer()==0) {
-				//employee menu system
-				Employee.employeeMenu(user, in);
+				//employee
+				System.out.println(user + "Employee");
 			}else {
 				//customer
-				Customer.customerMenu(user, in);
+				System.out.println(user);
 			}
 			break;
 		}
