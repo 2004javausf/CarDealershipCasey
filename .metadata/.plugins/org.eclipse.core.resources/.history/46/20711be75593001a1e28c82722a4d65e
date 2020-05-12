@@ -1,0 +1,39 @@
+package com.cardealer.daoimpl;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.cardealer.beans.UserCreds;
+import com.cardealer.dao.UserCredsDAO;
+import com.cardealer.util.ConnFactory;
+
+public class UserCredsDAOImpl implements UserCredsDAO {
+
+	public static ConnFactory cf=ConnFactory.getInstance();
+	
+	public void createUser(String username, String password) throws SQLException {
+		Connection conn=cf.getConnection();
+		String sql= "{ call INSERT INTO AUTHENTICATION VALUES(ID_GEN.NEXTVAL, ?, ?)";
+		CallableStatement call=conn.prepareCall(sql);
+		call.setString(1, username);
+		call.setString(2, password);
+		call.execute();
+	}
+
+	public UserCreds returnUser(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int checkUser(String username) throws SQLException {
+		Connection conn=cf.getConnection();
+		String sql= "{ call SELECT * FROM AUTHENTICATION WHERE USERNAME=?";
+		CallableStatement call=conn.prepareCall(sql);
+		call.setString(1, username);
+		call.execute();
+		return 0;
+	}
+
+}

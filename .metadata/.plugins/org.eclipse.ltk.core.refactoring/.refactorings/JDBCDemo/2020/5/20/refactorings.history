@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ConnFactory.java&apos; to &apos;Project0/src/main/java/com.cardealer.utilities&apos;&#x0D;&#x0A;- Original project: &apos;JDBCDemo&apos;&#x0D;&#x0A;- Destination element: &apos;Project0/src/main/java/com.cardealer.utilities&apos;&#x0D;&#x0A;- Original element: &apos;com.revature.util.ConnFactory.java&apos;" description="Copy compilation unit" destination="=Project0/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.cardealer.utilities" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.revature.util{ConnFactory.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1589163121114" units="1" version="1.0"/>
+</session>

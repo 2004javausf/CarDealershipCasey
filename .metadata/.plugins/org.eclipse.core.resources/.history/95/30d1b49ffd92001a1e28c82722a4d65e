@@ -1,0 +1,12 @@
+package com.cardealer.validation;
+
+import java.util.Scanner;
+
+public class Validate {
+
+	
+	public void YN (String ask, Scanner in) {
+		System.out.println(ask);
+		String userIn = in.next();
+	}
+}

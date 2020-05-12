@@ -1,0 +1,6 @@
+package com.cardealer.dao;
+
+public interface UserCredsDao {
+	public void createUser
+
+}

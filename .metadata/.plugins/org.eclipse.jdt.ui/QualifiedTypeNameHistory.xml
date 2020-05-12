@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.cardealer.validation.Validate"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.cardealer.menu.Login"/>
+<fullyQualifiedTypeName name="com.cardealer.utilities.FlushScanner"/>
+<fullyQualifiedTypeName name="com.cardealer.dao.UserCredsDAO"/>
+<fullyQualifiedTypeName name="com.cardealer.beans.UserCreds"/>
+<fullyQualifiedTypeName name="com.cardealer.utilities.ConnFactory"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="com.cardealer.util.FlushScanner"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="com.cardealer.daoimpl.UserCredsDAOImpl"/>
+</qualifiedTypeNameHistroy>

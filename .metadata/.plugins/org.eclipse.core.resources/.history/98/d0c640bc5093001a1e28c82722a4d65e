@@ -1,0 +1,71 @@
+package com.cardealer.menu;
+
+import java.util.Scanner;
+
+import com.cardealer.util.FlushScanner;
+import com.cardealer.util.Validate;
+
+public class UserLogin {
+
+	public static void login(Scanner in) {
+		
+		char newUser;
+		newUser = Validate.YN("Do you have an account? Y/N", in);
+		switch (newUser) {
+		case 'n':
+			char accountCreate;
+			accountCreate = Validate.YN("Would you like to create a new account? Y/N", in);
+			switch(accountCreate) {
+			case 'y':
+				//TODO account creation 
+				UserCreation.newAccount(in);
+				break;
+			case 'n':
+				System.out.println("Then get out of my shop!");
+				break;
+			}
+			break;
+		case 'y':
+			//User Authentication
+			int index;
+			index = authenticate(in);
+			if (index == -1) {
+				break;
+			}
+			//TODO Find account status at index
+			//If account has multiple statuses, ask which functionality they want to use
+			//Launch correct functionality for user type
+			break;
+		}
+	}
+
+	private static int authenticate (Scanner in) {
+		String username;
+		String password;
+		System.out.println("Please enter your username");
+		username = in.next();
+		FlushScanner.Flush(in);
+		System.out.println("Please enter your password");
+		password = in.next();
+		FlushScanner.Flush(in);
+		int index;
+		index = findIndex (username, password);
+		if(index == -1) {
+			char c = Validate.YN("Invalid username or password. Try again? Y/N", in);
+			switch(c) {
+			case 'y':
+				index = authenticate(in);
+				break;
+			case 'n':
+				System.out.println("Okay. Goodbye.");
+				break;
+			}
+		}
+		return index;
+	}
+
+	private static int findIndex(String username, String password) {
+		// TODO compare username and password to every username and password in database. Return on match, else return -1.
+		return -1;
+	}
+}

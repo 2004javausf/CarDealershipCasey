@@ -1,0 +1,8 @@
+package com.cardealer.menu;
+
+public class UserCreation {
+
+	public static void newAccount (Scanner in) {
+		
+	}
+}

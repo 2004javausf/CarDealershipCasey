@@ -1,0 +1,40 @@
+package com.cardealer.menu;
+
+import java.util.Scanner;
+
+import com.cardealer.utilities.FlushScanner;
+import com.cardealer.utilities.Validate;
+
+public class UserLogin {
+
+	public static void Login(Scanner in) {
+		char newUser;
+		newUser = Validate.YN("Do you have an account? Y/N", in);
+		switch (newUser) {
+		case 'n':
+			char accountCreate;
+			accountCreate = Validate.YN("Would you like to create a new account? Y/N", in);
+			switch(accountCreate) {
+			case 'y':
+				//TODO account creation 
+				break;
+			case 'n':
+				System.out.println("Then get out of my shop!");
+				break;
+			}
+			break;
+		case 'y':
+			//User Authentication
+			String username;
+			String password;
+			System.out.println("Please enter your username");
+			username = in.next();
+			FlushScanner.Flush(in);
+			System.out.println("Please enter your password");
+			password = in.next();
+			FlushScanner.Flush(in);
+			Authenticate (username, password);
+			break;
+		}
+	}
+}

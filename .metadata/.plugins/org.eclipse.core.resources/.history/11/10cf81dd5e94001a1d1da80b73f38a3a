@@ -1,0 +1,82 @@
+package com.cardealer.menu;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.cardealer.beans.UserCreds;
+import com.cardealer.daoimpl.UserCredsDAOImpl;
+import com.cardealer.util.FlushScanner;
+import com.cardealer.util.Validate;
+
+public class UserLogin {
+
+	public static void login(Scanner in) {
+		
+		char newUser;
+		newUser = Validate.yn("Do you have an account? Y/N", in);
+		switch (newUser) {
+		case 'n':
+			char accountCreate;
+			accountCreate = Validate.yn("Would you like to create a new account? Y/N", in);
+			switch(accountCreate) {
+			case 'y':
+				UserCreation.newAccount(in);
+				break;
+			case 'n':
+				System.out.println("Then get out of my shop!");
+				break;
+			}
+			break;
+		case 'y':
+			//User Authentication
+			UserCreds user;
+			user = authenticate(in);
+			if (user == null) {
+				break;
+			}
+			//TODO Find account status at index
+			//If account has multiple statuses, ask which functionality they want to use
+			//Launch correct functionality for user type
+			break;
+		}
+	}
+
+	private static UserCreds authenticate (Scanner in) {
+		String username;
+		String password;
+		System.out.println("Please enter your username");
+		username = in.next();
+		FlushScanner.flush(in);
+		System.out.println("Please enter your password");
+		password = in.next();
+		FlushScanner.flush(in);
+		UserCreds index;
+		index = findIndex (username, password);
+		if(index == null) {
+			char c = Validate.yn("Invalid username or password. Try again? Y/N", in);
+			switch(c) {
+			case 'y':
+				index = authenticate(in);
+				break;
+			case 'n':
+				System.out.println("Okay. Goodbye.");
+				break;
+			}
+		}
+		return index;
+	}
+
+	private static UserCreds findIndex(String username, String password) {
+		// Compare username and password to every username and password in database. Return ID on match, else return -1.
+		UserCredsDAOImpl ucdi = new UserCredsDAOImpl();
+		UserCreds index;
+		try {
+			index = ucdi.idReturn(username, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return index;
+
+	}
+}

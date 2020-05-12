@@ -1,0 +1,23 @@
+package com.cardealer.menu;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.cardealer.daoimpl.UserCredsDAOImpl;
+
+public class UserCreation {
+
+	public static void newAccount (Scanner in) {
+		String username;
+		String password;
+		System.out.println("Please select a username.");
+		username = in.next();
+		UserCredsDAOImpl ucdi = new UserCredsDAOImpl();
+		
+		try {
+			ucdi.createUser("CrazyEarl", "GetOut");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

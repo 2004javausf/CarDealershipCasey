@@ -1,0 +1,8 @@
+package com.cardealer.dao;
+
+import java.sql.SQLException;
+
+public interface UserCredsDao {
+	public void createUser (String username, String password) throws SQLException;
+
+}

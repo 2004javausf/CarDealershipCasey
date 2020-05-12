@@ -1,0 +1,12 @@
+package com.cardealer.utilities;
+
+import java.util.Scanner;
+
+public class FlushScanner {
+	
+	@SuppressWarnings("resource")
+	public static void Flush (Scanner in) {
+		in = new Scanner(System.in);
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.cardealer.utilities;
+
+import java.util.Scanner;
+
+public class Validate {
+
+	
+	public static char YN (String ask, Scanner in) {
+		System.out.println(ask);
+		String userIn = in.next();
+		if (userIn.equalsIgnoreCase("y")) {
+			return 'y';
+		}else if(userIn.equalsIgnoreCase("n")) {
+			return 'n';
+		}else {
+			System.out.println("Invalid answer. Please answer y/n");
+			in = new Scanner(System.in);
+			return YN(ask, in);
+		}
+	}
+}

@@ -1,0 +1,6 @@
+package com.cardealer.dao;
+
+public interface AuthenticationDao {
+	public void createUser
+
+}

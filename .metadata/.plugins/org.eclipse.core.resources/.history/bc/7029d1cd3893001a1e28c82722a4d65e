@@ -1,0 +1,19 @@
+package com.cardealer.daoimpl;
+
+import java.sql.SQLException;
+
+import com.cardealer.dao.UserCredsDAO;
+
+public class UserCredsDAOImpl implements UserCredsDAO {
+
+	public void createUser(String username, String password) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String returnUser(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
