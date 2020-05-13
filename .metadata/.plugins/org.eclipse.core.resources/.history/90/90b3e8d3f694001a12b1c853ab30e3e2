@@ -28,7 +28,7 @@ public class CarOwnerDAOImpl implements CarOwnerDAO{
 		PreparedStatement p = conn.prepareStatement(sql);
 		ResultSet rs = p.executeQuery();
 		
-		while(rs.next()) {
+		if(rs.next()) {
 			CarOwner co = new CarOwner(rs.getInt(1), rs.getInt(2));
 			lot.add(co);
 		}
@@ -54,15 +54,6 @@ public class CarOwnerDAOImpl implements CarOwnerDAO{
 		String sql= "{ call DELETE FROM CAR_OWNER WHERE CAR_ID =?";
 		CallableStatement call=conn.prepareCall(sql);
 		call.setInt(1, carId);
-		call.execute();
-	}
-	
-	public void changeOwner(int carId, int userId) throws SQLException {
-		Connection conn=cf.getConnection();
-		String sql= "{ call UPDATE CAR_OWNER SET USER_ID =? WHERE CAR_ID =?";
-		CallableStatement call=conn.prepareCall(sql);
-		call.setInt(1, userId);
-		call.setInt(2, carId);
 		call.execute();
 	}
 	

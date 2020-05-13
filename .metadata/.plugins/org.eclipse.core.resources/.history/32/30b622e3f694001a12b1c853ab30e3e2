@@ -62,7 +62,7 @@ public class PendingOffersDAOImpl implements PendingOffersDAO{
 			p.setInt(1, carId);
 			ResultSet rs = p.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				PendingOffers offer = new PendingOffers(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDouble(4));
 				offers.add(offer);
 			}

@@ -28,7 +28,7 @@ public class AcceptedOffersDAOImpl implements AcceptedOffersDAO {
 
 	public AcceptedOffers getPaymentId(int carId) throws SQLException {
 		Connection conn = cf.getConnection();
-		String sql = "SELECT * FROM ACCEPTED_OFFERS WHERE CAR_ID=?";
+		String sql = "SELECT * FROM ACCEPTED_OFFERS WHERE CUSTOMER_ID=?";
 		PreparedStatement p = conn.prepareStatement(sql);
 		p.setInt(1, carId);
 		ResultSet rs = p.executeQuery();
@@ -40,12 +40,12 @@ public class AcceptedOffersDAOImpl implements AcceptedOffersDAO {
 
 	}
 
-	public ArrayList<AcceptedOffers> getPayment(int customerId) throws SQLException {
+	public ArrayList<AcceptedOffers> getPayment(int carId) throws SQLException {
 		ArrayList<AcceptedOffers> payment = new ArrayList<AcceptedOffers>();
 		Connection conn = cf.getConnection();
-		String sql = "SELECT * FROM ACCEPTED_OFFERS WHERE CUSTOMER_ID=?";
+		String sql = "SELECT * FROM ACCEPTED_OFFERS WHERE CAR_ID=?";
 		PreparedStatement p = conn.prepareStatement(sql);
-		p.setInt(1, customerId);
+		p.setInt(1, carId);
 		ResultSet rs = p.executeQuery();
 
 		while (rs.next()) {

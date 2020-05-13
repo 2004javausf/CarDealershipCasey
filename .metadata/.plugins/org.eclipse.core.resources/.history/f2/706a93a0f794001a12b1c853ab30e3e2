@@ -43,10 +43,6 @@ public class UserLogin {
 			}
 			break;
 		}
-		
-		if(Validate.yn("Do you want to restart the menu?", in)=='y') {
-			login(in);
-		}
 	}
 
 	private static UserCreds authenticate (Scanner in) {

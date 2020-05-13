@@ -57,13 +57,14 @@ public class CarOwnerDAOImpl implements CarOwnerDAO{
 		call.execute();
 	}
 	
-	public void changeOwner(int carId, int userId) throws SQLException {
+	public void changeOwner(int carId, int userId) {
 		Connection conn=cf.getConnection();
 		String sql= "{ call UPDATE CAR_OWNER SET USER_ID =? WHERE CAR_ID =?";
 		CallableStatement call=conn.prepareCall(sql);
-		call.setInt(1, userId);
-		call.setInt(2, carId);
+		call.setInt(1, carId);
+		call.setInt(2, userId);
 		call.execute();
+	}
 	}
 	
 }

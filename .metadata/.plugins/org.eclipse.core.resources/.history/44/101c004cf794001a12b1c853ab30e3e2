@@ -61,7 +61,7 @@ public class Employee {
 		FlushScanner.flush(in);
 		try {
 			AcceptedOffers payment = aodi.getPaymentId(carId);
-			if(payment==null) {
+			if(payment.equals(null)) {
 				System.out.println("This doesn't exist! Quit wasting time!");
 				return;
 			}
@@ -120,7 +120,6 @@ public class Employee {
 						aodi.createAcceptedOffer(pending.get(i).getCarId(), pending.get(i).getCustomerId(), months,
 								pending.get(i).getOffer());
 						podi.deleteOffer(pending.get(i).getCarId());
-						codi.changeOwner(pending.get(i).getCarId(), pending.get(i).getCustomerId());
 						return;
 					} else if (Validate.yn("Would you like to reject this offer? Y/N", in) == 'y') {
 						podi.deleteOfferId(pending.get(i).getOfferId());

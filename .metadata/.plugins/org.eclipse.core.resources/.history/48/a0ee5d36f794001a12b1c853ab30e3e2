@@ -61,10 +61,6 @@ public class Employee {
 		FlushScanner.flush(in);
 		try {
 			AcceptedOffers payment = aodi.getPaymentId(carId);
-			if(payment==null) {
-				System.out.println("This doesn't exist! Quit wasting time!");
-				return;
-			}
 			System.out.println("Car " + payment.getCarId() + " belonging to customer " + payment.getCustomerId()
 					+ " has " + payment.getMonthsLeft() + " months left of payments to make. They owe a total of $"
 					+ df.format(payment.getAmountOwed()) + " for a payment of $"
@@ -120,7 +116,6 @@ public class Employee {
 						aodi.createAcceptedOffer(pending.get(i).getCarId(), pending.get(i).getCustomerId(), months,
 								pending.get(i).getOffer());
 						podi.deleteOffer(pending.get(i).getCarId());
-						codi.changeOwner(pending.get(i).getCarId(), pending.get(i).getCustomerId());
 						return;
 					} else if (Validate.yn("Would you like to reject this offer? Y/N", in) == 'y') {
 						podi.deleteOfferId(pending.get(i).getOfferId());

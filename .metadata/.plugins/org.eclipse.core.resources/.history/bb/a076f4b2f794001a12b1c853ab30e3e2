@@ -44,9 +44,7 @@ public class UserLogin {
 			break;
 		}
 		
-		if(Validate.yn("Do you want to restart the menu?", in)=='y') {
-			login(in);
-		}
+		Validate.yn("Do you want to restart the menu?", in);
 	}
 
 	private static UserCreds authenticate (Scanner in) {
