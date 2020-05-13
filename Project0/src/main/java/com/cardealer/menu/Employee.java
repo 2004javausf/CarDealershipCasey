@@ -13,6 +13,7 @@ import com.cardealer.daoimpl.AcceptedOffersDAOImpl;
 import com.cardealer.daoimpl.CarOwnerDAOImpl;
 import com.cardealer.daoimpl.PendingOffersDAOImpl;
 import com.cardealer.util.FlushScanner;
+import com.cardealer.util.LogThis;
 import com.cardealer.util.Validate;
 
 public class Employee {
@@ -34,18 +35,22 @@ public class Employee {
 
 		switch (Validate.numVal(5, in)) {
 		case 1:
+			LogThis.LogIt("info", user.getUsername() + " has added cars to the lot");
 			addCar(in);
 			goAgain(user, in);
 			break;
 		case 2:
+			LogThis.LogIt("info", user.getUsername() + " has reviewed car offers");
 			reviewOffers(in);
 			goAgain(user, in);
 			break;
 		case 3:
+			LogThis.LogIt("info", user.getUsername() + " has removed cars from the lot");
 			removeCar(in);
 			goAgain(user, in);
 			break;
 		case 4:
+			LogThis.LogIt("info", user.getUsername() + " has viewed car payments");
 			paymentView(in);
 			goAgain(user, in);
 			break;
