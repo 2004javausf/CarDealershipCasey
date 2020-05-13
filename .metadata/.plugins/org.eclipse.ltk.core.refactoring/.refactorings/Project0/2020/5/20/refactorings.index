@@ -17,3 +17,7 @@
 1589178606216	Rename method 'yN'
 1589293354363	Encapsulate field 'customer'
 1589336191701	Extract method 'goAgain'
+1589350756696	Delete element
+1589350760760	Delete element
+1589350764981	Delete element
+1589352952718	Rename local variable 'lot'

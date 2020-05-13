@@ -1,0 +1,54 @@
+package com.cardealer.daoimpl;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.cardealer.beans.CarOwner;
+import com.cardealer.dao.PendingOffersDAO;
+import com.cardealer.util.ConnFactory;
+
+public class PendingOffersDAOImpl implements PendingOffersDAO{
+
+	public static ConnFactory cf=ConnFactory.getInstance();
+	
+	public void createOffer(int carId, int customerId, double offer) throws SQLException {
+		Connection conn=cf.getConnection();
+		String sql= "{ call INSERT INTO PENDING_OFFERS VALUES(OFFER_ID_GEN.NEXTVAL, ?, ?,?)";
+		CallableStatement call=conn.prepareCall(sql);
+		call.setInt(1, carId);
+		call.setInt(2, customerId);
+		call.setDouble(3, offer);
+		call.execute();
+	}
+	
+	public ArrayList<CarOwner> allPending() throws SQLException{
+		ArrayList<CarOwner> lot = new ArrayList<CarOwner>(); 
+		Connection conn=cf.getConnection();
+		String sql= "SELECT * FROM CAR_OWNER WHERE USER_ID=0";
+		PreparedStatement p = conn.prepareStatement(sql);
+		ResultSet rs = p.executeQuery();
+		
+		if(rs.next()) {
+			CarOwner co = new CarOwner(rs.getInt(1), rs.getInt(2));
+			lot.add(co);
+		}
+		return lot;
+		
+	}	public ArrayList<CarOwner> onePending() throws SQLException{
+		ArrayList<CarOwner> lot = new ArrayList<CarOwner>(); 
+		Connection conn=cf.getConnection();
+		String sql= "SELECT * FROM CAR_OWNER WHERE USER_ID=0";
+		PreparedStatement p = conn.prepareStatement(sql);
+		ResultSet rs = p.executeQuery();
+		
+		if(rs.next()) {
+			CarOwner co = new CarOwner(rs.getInt(1), rs.getInt(2));
+			lot.add(co);
+		}
+		return lot;
+	}
+}

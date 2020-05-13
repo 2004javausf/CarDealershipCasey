@@ -14,12 +14,10 @@ public class CarOwnerDAOImpl implements CarOwnerDAO{
 	
 	private static ConnFactory cf=ConnFactory.getInstance();
 	
-	public void createCar(int carId, int customerId) throws SQLException {
+	public void createCar() throws SQLException {
 		Connection conn=cf.getConnection();
-		String sql= "{ call INSERT INTO CAR_OWNER VALUES( ?, ?)";
+		String sql= "{ call INSERT INTO CAR_OWNER VALUES(CAR_ID_GEN, 0)";
 		CallableStatement call=conn.prepareCall(sql);
-		call.setInt(1, carId);
-		call.setInt(2, customerId);
 		call.execute();
 	}
 	

@@ -1,0 +1,20 @@
+package com.cardealer.menu;
+
+import java.util.Scanner;
+
+import com.cardealer.beans.UserCreds;
+
+public class Employee {
+	
+	public static void employeeMenu(UserCreds user, Scanner in) {
+		
+		System.out.println("Please select what you would like to do:");
+		System.out.println("1. Add a car to the lot");
+		System.out.println("2. Review offers for cars");
+		System.out.println("3. Remove a car from the lot");
+		System.out.println("4. View car payments");
+		System.out.println("5. Exit");
+		
+	}
+
+}

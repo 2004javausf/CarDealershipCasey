@@ -49,7 +49,7 @@ public class Customer {
 			goAgain(user, in);
 			break;
 		case 5:
-			System.out.println("Have an excellent day!");
+			System.out.println("Go earn more money and buy something!");
 			break;
 		}
 	}
@@ -72,8 +72,9 @@ public class Customer {
 				payment = aodi.getPayment(user.getId());
 				for (int i = 0; i < payment.size(); i++) {
 					System.out.println("Car ID " + payment.get(i).getCarId() + " has " + payment.get(i).getMonthsLeft()
-							+ " months left of payment to go at a price of $"
-							+ df.format(payment.get(i).getAmountOwed()));
+							+ " months left of payment to go for a total of $"
+							+ df.format(payment.get(i).getAmountOwed()) + ". Your cost per month is $"
+							+ df.format(payment.get(i).getAmountOwed() / (double) payment.get(i).getMonthsLeft()));
 				}
 			}
 

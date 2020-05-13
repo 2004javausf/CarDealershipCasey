@@ -1,0 +1,62 @@
+package com.cardealer.menu;
+
+import java.util.Scanner;
+
+import com.cardealer.beans.UserCreds;
+import com.cardealer.util.Validate;
+
+public class Employee {
+	
+	public static void employeeMenu(UserCreds user, Scanner in) {
+		
+		System.out.println("Please select what you would like to do:");
+		System.out.println("1. Add a car to the lot");
+		System.out.println("2. Review offers for cars");
+		System.out.println("3. Remove a car from the lot");
+		System.out.println("4. View car payments");
+		System.out.println("5. Exit");
+		
+		switch (Validate.numVal(5, in)) {
+		case 1:
+			addCar();
+			goAgain(user, in);
+			break;
+		case 2:
+			reviewOffers(in);
+			goAgain(user, in);
+			break;
+		case 3:
+			removeCar(in);
+			goAgain(user, in);
+			break;
+		case 4:
+			goAgain(user, in);
+			break;
+		case 5:
+			System.out.println("Go sell more cars!");
+			break;
+		}
+	}
+
+	private static void removeCar(Scanner in) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void reviewOffers(Scanner in) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void addCar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void goAgain(UserCreds user, Scanner in) {
+		if (Validate.yn("Would you like to do something else? Y/N", in) == 'y') {
+			employeeMenu(user, in);
+		}
+	}
+
+}

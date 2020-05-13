@@ -1,0 +1,135 @@
+package com.cardealer.menu;
+
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import com.cardealer.beans.CarOwner;
+import com.cardealer.beans.PendingOffers;
+import com.cardealer.beans.UserCreds;
+import com.cardealer.daoimpl.AcceptedOffersDAOImpl;
+import com.cardealer.daoimpl.CarOwnerDAOImpl;
+import com.cardealer.daoimpl.PendingOffersDAOImpl;
+import com.cardealer.util.FlushScanner;
+import com.cardealer.util.Validate;
+
+public class Employee {
+	
+	private static CarOwnerDAOImpl codi = new CarOwnerDAOImpl();
+	private static PendingOffersDAOImpl podi = new PendingOffersDAOImpl();
+	private static AcceptedOffersDAOImpl aodi = new AcceptedOffersDAOImpl();
+	
+	private static DecimalFormat df = new DecimalFormat("#.##");
+	
+	public static void employeeMenu(UserCreds user, Scanner in) {
+		
+		System.out.println("Please select what you would like to do:");
+		System.out.println("1. Add a car to the lot");
+		System.out.println("2. Review offers for cars");
+		System.out.println("3. Remove a car from the lot");
+		System.out.println("4. View car payments");
+		System.out.println("5. Exit");
+		
+		switch (Validate.numVal(5, in)) {
+		case 1:
+			addCar(in);
+			goAgain(user, in);
+			break;
+		case 2:
+			reviewOffers(in);
+			goAgain(user, in);
+			break;
+		case 3:
+			removeCar(in);
+			goAgain(user, in);
+			break;
+		case 4:
+			paymentView(in);
+			goAgain(user, in);
+			break;
+		case 5:
+			System.out.println("Go sell more cars!");
+			break;
+		}
+	}
+
+	private static void paymentView(Scanner in) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void removeCar(Scanner in) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void reviewOffers(Scanner in) {
+		try {
+			ArrayList<CarOwner> lot = codi.getLot();
+			if(Validate.yn("You got a specific car in mind?", in)=='y') {
+				System.out.println("Which one?");
+				int carId = in.nextInt();
+				FlushScanner.flush(in);
+				boolean inLot = false;
+				for (int i = 0; i<lot.size();i++) {
+					if(carId == lot.get(i).getCarId()) {
+						inLot = true;
+						i=lot.size();
+					}
+				}
+				if (!inLot) {
+					System.out.println("What are you tryin' to pull? That car's not in the lot!");
+					return;
+				}else {
+					ArrayList<PendingOffers> pending = podi.onePending(carId);
+					if(pending.isEmpty()) {
+						System.out.println("There's no offers on this car. Go get some!");
+						return;
+					}
+					System.out.println("There's " + pending.size() + " offers on this car.");
+					boolean completed = false;
+					int i=0;
+					while (!completed) {
+						System.out.println("Customer number " + pending.get(i).getCustomerId() + " is offering $" + df.format(pending.get(i).getOffer()));
+						if(Validate.yn("Would you like to accept their offer? Y/N", in) == 'y') {
+							System.out.println("How many months do they have to pay this off?");
+							int months = in.nextInt();
+							FlushScanner.flush(in);
+							completed = true;
+							aodi.createAcceptedOffer(pending.get(i).getCarId(), pending.get(i).getCustomerId(), months, pending.get(i).getOffer());
+							podi.deleteOffer(pending.get(i).getCarId());
+						}
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private static void addCar(Scanner in) {
+		
+		System.out.println("How many cars you want to add?");
+		int i = in.nextInt();
+		FlushScanner.flush(in);
+		try {
+			while (i>0) {
+				codi.createCar();
+				i--;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Done. Cars are on the lot. Go sell them!");
+	}
+
+	private static void goAgain(UserCreds user, Scanner in) {
+		if (Validate.yn("Would you like to do something else? Y/N", in) == 'y') {
+			employeeMenu(user, in);
+		}
+	}
+
+}
