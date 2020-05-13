@@ -12,6 +12,7 @@ import com.cardealer.daoimpl.AcceptedOffersDAOImpl;
 import com.cardealer.daoimpl.CarOwnerDAOImpl;
 import com.cardealer.daoimpl.PendingOffersDAOImpl;
 import com.cardealer.util.FlushScanner;
+import com.cardealer.util.LogThis;
 import com.cardealer.util.Validate;
 
 public class Customer {
@@ -33,18 +34,22 @@ public class Customer {
 
 		switch (Validate.numVal(5, in)) {
 		case 1:
+			LogThis.LogIt("info", user.getUsername() + " has viewed the car lot");
 			viewLot();
 			goAgain(user, in);
 			break;
 		case 2:
+			LogThis.LogIt("info", user.getUsername() + " has made an offer on a car");
 			offerCar(user, in);
 			goAgain(user, in);
 			break;
 		case 3:
+			LogThis.LogIt("info", user.getUsername() + " has viewed his/her cars");
 			viewOwned(user);
 			goAgain(user, in);
 			break;
 		case 4:
+			LogThis.LogIt("info", user.getUsername() + " has viewed their car balance");
 			viewPayment(user);
 			goAgain(user, in);
 			break;
