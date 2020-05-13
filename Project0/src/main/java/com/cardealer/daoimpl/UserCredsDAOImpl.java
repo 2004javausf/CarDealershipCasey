@@ -12,7 +12,7 @@ import com.cardealer.util.ConnFactory;
 
 public class UserCredsDAOImpl implements UserCredsDAO {
 
-	public static ConnFactory cf=ConnFactory.getInstance();
+	private static ConnFactory cf=ConnFactory.getInstance();
 	
 	public void createUser(String username, String password) throws SQLException {
 		Connection conn=cf.getConnection();

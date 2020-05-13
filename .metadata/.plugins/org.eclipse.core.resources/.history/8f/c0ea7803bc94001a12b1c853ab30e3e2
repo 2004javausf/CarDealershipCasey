@@ -1,0 +1,20 @@
+package com.cardealer.driver;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+import com.cardealer.menu.UserLogin;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		double d = 19909.1231232;
+		DecimalFormat df = new DecimalFormat("#.##");
+		System.out.println(df.format(d));
+		
+		UserLogin.login(in);
+	}
+
+}

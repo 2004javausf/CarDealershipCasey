@@ -1,0 +1,68 @@
+package com.cardealer.menu;
+
+import java.util.Scanner;
+
+import com.cardealer.beans.UserCreds;
+import com.cardealer.util.Validate;
+
+public class Customer {
+	
+	public static void customerMenu(UserCreds user, Scanner in) {
+		
+		System.out.println("Please select what you would like to do:");
+		System.out.println("1. View cars on lot");
+		System.out.println("2. Make an offer on a car");
+		System.out.println("3. View owned car(s)");
+		System.out.println("4. View payment(s) remaining on your car");
+		System.out.println("5. Exit");
+		
+		switch(Validate.numVal(5, in)) {
+		case 1:
+			viewLot();
+			goAgain(user, in);
+			break;
+		case 2:
+			offerCar(user, in);
+			goAgain(user, in);
+			break;
+		case 3:
+			viewOwned(user);
+			goAgain(user, in);
+			break;
+		case 4:
+			viewPayment(user);
+			goAgain(user, in);
+			break;
+		case 5:
+			System.out.println("Have an excellent day!");
+			break;
+		}
+	}
+
+	private static void goAgain(UserCreds user, Scanner in) {
+		if(Validate.yn("Would you like to do something else?", in)=='y') {
+			customerMenu(user, in);
+		}
+	}
+
+	private static void viewPayment(UserCreds user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void viewOwned(UserCreds user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void offerCar(UserCreds user, Scanner in) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void viewLot() {
+		System.out.println("The following are the cars for sale on the lot:");
+		ArrayList<CarOwner> = CarOwnerDAOImpl.getLot();
+	}
+
+}

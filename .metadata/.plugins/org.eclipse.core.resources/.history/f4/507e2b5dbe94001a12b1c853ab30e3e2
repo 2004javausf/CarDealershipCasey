@@ -1,0 +1,15 @@
+package com.cardealer.driver;
+
+import java.util.Scanner;
+
+import com.cardealer.menu.UserLogin;
+import com.cardealer.util.Validate;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		UserLogin.login(in);
+	}
+
+}

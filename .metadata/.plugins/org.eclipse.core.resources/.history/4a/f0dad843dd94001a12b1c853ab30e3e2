@@ -1,0 +1,25 @@
+package com.cardealer.daoimpl;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.cardealer.dao.AcceptedOffersDAO;
+import com.cardealer.util.ConnFactory;
+
+public class AcceptedOffersDAOImpl implements AcceptedOffersDAO {
+	
+	public static ConnFactory cf=ConnFactory.getInstance();
+	
+	public void createAcceptedOffer(int offerId, int carId, int customerId, int monthsLeft, double amountOwed) throws SQLException {
+		Connection conn=cf.getConnection();
+		String sql= "{ call INSERT INTO ACCEPTED_OFFERS VALUES(?, ?, ?,?)";
+		CallableStatement call=conn.prepareCall(sql);
+		call.setInt(1, carId);
+		call.setInt(2, customerId);
+		call.setInt(3, monthsLeft);
+		call.setDouble(4, amountOwed);
+		call.execute();
+	}
+
+}

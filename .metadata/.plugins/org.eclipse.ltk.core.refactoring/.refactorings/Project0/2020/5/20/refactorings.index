@@ -16,3 +16,4 @@
 1589178595949	Rename method 'YN'
 1589178606216	Rename method 'yN'
 1589293354363	Encapsulate field 'customer'
+1589336191701	Extract method 'goAgain'

@@ -2,7 +2,6 @@ package com.cardealer.beans;
 
 public class AcceptedOffers {
 	
-	Integer offerId;
 	Integer carId;
 	Integer customerId;
 	Integer MonthsLeft;
@@ -11,19 +10,12 @@ public class AcceptedOffers {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AcceptedOffers(Integer offerId, Integer carId, Integer customerId, Integer monthsLeft, Double amountOwed) {
+	public AcceptedOffers(Integer carId, Integer customerId, Integer monthsLeft, Double amountOwed) {
 		super();
-		this.offerId = offerId;
 		this.carId = carId;
 		this.customerId = customerId;
 		MonthsLeft = monthsLeft;
 		AmountOwed = amountOwed;
-	}
-	public Integer getOfferId() {
-		return offerId;
-	}
-	public void setOfferId(Integer offerId) {
-		this.offerId = offerId;
 	}
 	public Integer getCarId() {
 		return carId;
@@ -51,7 +43,7 @@ public class AcceptedOffers {
 	}
 	@Override
 	public String toString() {
-		return "AcceptedOffers [offerId=" + offerId + ", carId=" + carId + ", customerId=" + customerId
+		return "AcceptedOffers [carId=" + carId + ", customerId=" + customerId
 				+ ", MonthsLeft=" + MonthsLeft + ", AmountOwed=" + AmountOwed + "]";
 	}
 	

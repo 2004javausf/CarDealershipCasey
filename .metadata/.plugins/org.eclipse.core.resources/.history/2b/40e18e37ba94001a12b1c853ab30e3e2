@@ -1,0 +1,34 @@
+package com.cardealer.menu;
+
+import java.util.Scanner;
+
+import com.cardealer.beans.UserCreds;
+import com.cardealer.util.Validate;
+
+public class Customer {
+	
+	public static void customerMenu(UserCreds user, Scanner in) {
+		
+		System.out.println("Please select what you would like to do:");
+		System.out.println("1. View cars on lot");
+		System.out.println("2. Make an offer on a car");
+		System.out.println("3. View owned car(s)");
+		System.out.println("4. View payment(s) remaining on your car");
+		System.out.println("5. Exit");
+		
+		switch(Validate.numVal(5, in)) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			System.out.println("Have an excellent day.");
+			break;
+		}
+	}
+
+}
