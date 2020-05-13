@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.cardealer.daoimpl.UserCredsDAOImpl;
 import com.cardealer.util.FlushScanner;
+import com.cardealer.util.LogThis;
 
 public class UserCreation {
 
@@ -36,6 +37,7 @@ public class UserCreation {
 			return;
 		}
 		System.out.println("Account successfully created.");
+		LogThis.LogIt("info", "account" + username + " " + password + "created.");
 		return;
 	}
 }
