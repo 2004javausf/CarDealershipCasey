@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.cardealer.beans.UserCreds;
 import com.cardealer.daoimpl.UserCredsDAOImpl;
 import com.cardealer.util.FlushScanner;
+import com.cardealer.util.LogThis;
 import com.cardealer.util.Validate;
 
 public class UserLogin {
@@ -36,9 +37,11 @@ public class UserLogin {
 			}
 			else if(user.getCustomer()==0) {
 				//employee menu system
+				LogThis.LogIt("info", user.getUsername() + " just logged in.");
 				Employee.employeeMenu(user, in);
 			}else {
 				//customer
+				LogThis.LogIt("info", user.getUsername() + " just logged in.");
 				Customer.customerMenu(user, in);
 			}
 			break;
