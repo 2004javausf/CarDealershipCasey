@@ -61,11 +61,9 @@ public class Employee {
 		FlushScanner.flush(in);
 		try {
 			AcceptedOffers payment = aodi.getPaymentId(carId);
-			System.out.println("Car " + payment.getCarId() + " belonging to customer " + payment.getCustomerId()
-					+ " has " + payment.getMonthsLeft() + " months left of payments to make. They owe a total of $"
-					+ df.format(payment.getAmountOwed()) + " for a payment of $"
-					+ df.format(payment.getAmountOwed() / (double) payment.getMonthsLeft()) + " a month.");
+			System.out.println("Car " + payment.getCarId() + " belonging to customer " + payment.getCustomerId() + " has " + payment.getMonthsLeft() + " months left of payments to make. They owe a total of $" + df.format(payment.getAmountOwed())+ " for a payment of $" + df.format(payment.getAmountOwed()/(double)payment.getMonthsLeft()) + " a month.");
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

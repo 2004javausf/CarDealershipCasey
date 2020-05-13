@@ -49,12 +49,8 @@ public class CarOwnerDAOImpl implements CarOwnerDAO{
 		}
 		return owned;
 	}	
-	public void removeCar(int carId) throws SQLException {
-		Connection conn=cf.getConnection();
-		String sql= "{ call DELETE FROM CAR_OWNER WHERE CAR_ID =?";
-		CallableStatement call=conn.prepareCall(sql);
-		call.setInt(1, carId);
-		call.execute();
+	public void removeCar(int carId) {
+		
 	}
 	
 }

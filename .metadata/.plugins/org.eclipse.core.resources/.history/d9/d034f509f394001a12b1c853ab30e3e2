@@ -5,7 +5,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.cardealer.beans.AcceptedOffers;
 import com.cardealer.beans.CarOwner;
 import com.cardealer.beans.PendingOffers;
 import com.cardealer.beans.UserCreds;
@@ -59,15 +58,6 @@ public class Employee {
 		System.out.println("Which car do you want to see the payments for?");
 		int carId = in.nextInt();
 		FlushScanner.flush(in);
-		try {
-			AcceptedOffers payment = aodi.getPaymentId(carId);
-			System.out.println("Car " + payment.getCarId() + " belonging to customer " + payment.getCustomerId()
-					+ " has " + payment.getMonthsLeft() + " months left of payments to make. They owe a total of $"
-					+ df.format(payment.getAmountOwed()) + " for a payment of $"
-					+ df.format(payment.getAmountOwed() / (double) payment.getMonthsLeft()) + " a month.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	private static void removeCar(Scanner in) {

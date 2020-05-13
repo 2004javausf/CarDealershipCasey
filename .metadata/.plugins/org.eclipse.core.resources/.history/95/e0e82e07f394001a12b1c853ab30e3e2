@@ -26,17 +26,18 @@ public class AcceptedOffersDAOImpl implements AcceptedOffersDAO {
 		call.execute();
 	}
 
-	public AcceptedOffers getPaymentId(int carId) throws SQLException {
+	public AcceptedOffers getPaymentId(int carId) {
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM ACCEPTED_OFFERS WHERE CUSTOMER_ID=?";
 		PreparedStatement p = conn.prepareStatement(sql);
 		p.setInt(1, carId);
 		ResultSet rs = p.executeQuery();
-		AcceptedOffers ao=null;
+		AcceptedOffers ao;
 		if (rs.next()) {
 			ao = new AcceptedOffers(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDouble(4));
 		}
 		return ao;
+	}
 
 	}
 
